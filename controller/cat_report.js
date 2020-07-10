@@ -1,10 +1,11 @@
 var express=require("express");
 var sessionStorage=require("node-sessionstorage")
 var router=express.Router();
-var cat_report=require("../model/cat_report")
+var cat_report=require("../model/category")
+var collection_name="cat"
 //var plotly=require("plotly")("ManasviKaplay","DHv9wPPLsJ20hqTlheEW")
 router.get('/report',function(req,res){
-    cat_report.find(function(err,result){
+    cat_report.find(collection_name,function(err,result){
         if(err){
             res.send(err)
         }

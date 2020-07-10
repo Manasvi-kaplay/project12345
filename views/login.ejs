@@ -16,8 +16,8 @@
                 <label>District:</label>
                 <select id="district" name="district">
                     <option>Select district</option>
-                    <% districts.forEach(function(x){ %>
-                        <option value="<%= Object.keys(x) %>"><%=Object.keys(x)  %></option>
+                    <% result2.forEach(function(x){ %>
+                        <option value="<%= x %>"><%=x  %></option>
                    <% }) %>
                   </select>
             </div>
