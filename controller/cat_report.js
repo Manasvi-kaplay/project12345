@@ -1,5 +1,4 @@
 var express=require("express");
-var sessionStorage=require("node-sessionstorage")
 var router=express.Router();
 var cat_report=require("../model/category")
 var collection_name="cat"
@@ -13,11 +12,10 @@ router.get('/report',function(req,res){
             var data2=result[0]
             console.log("result....",data2)
             var sc_fam = data2.sc_fam;
-            sessionStorage.setItem("sc_fam", sc_fam);
             var st_fam = data2.st_fam;
-            sessionStorage.setItem("st_fam", st_fam);
             var other_fam = data2.other_fam;
-            sessionStorage.setItem("other_fam", other_fam);
+            var male=data2.male;
+            var female=data2.female;
             /*var data = [
                 {
                   x: ["SC","ST","Other"],
@@ -30,9 +28,8 @@ router.get('/report',function(req,res){
               plotly.plot(data, graphOptions, function (err, msg) {
                   console.log(msg);
               });*/
-              var pagedata={"title":"category job card report","pagename":"cat_report",data2:data2}
-    res.render("layout",pagedata)
-
+              var pagedata={"title":"category job card report","pagename":"cat_report",data2:data2,sc_fam:sc_fam,st_fam:st_fam,other_fam:other_fam,male:male,female:female}
+              res.render("layout",pagedata)
         }
     })
 })

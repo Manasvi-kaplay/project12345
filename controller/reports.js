@@ -6,7 +6,12 @@ router.post('/list',function(req,res){
     var state=req.body.state;
     var district=req.body.district;
     var block=req.body.block;
-    var panchayat=req.body.panchayat
+    var panchayat=req.body.panchayat;
+    req.session.year = year;
+    req.session.state = state;
+    req.session.district=district;
+    req.session.block = block;
+    req.session.panchayat = panchayat;
     var pagedata={"pagename":"reports","title":"Gram panchayat reports",state:state,year:year,district:district,block:block,panchayat:panchayat}
             res.render("layout",pagedata);
 })
