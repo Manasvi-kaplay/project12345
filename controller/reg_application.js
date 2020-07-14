@@ -45,13 +45,13 @@ router.post('/view_by_filters',function(req,res){
         }
         if(result){
             console.log("success......",result)
-            /*if(result.length==0){
+            if(result.length==0){
                 res.send("No matches found")
             }
-            else{*/
+            else{
             var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
             res.render("layout",pagedata)
-            //}
+            }
         }
     })
     }
@@ -62,14 +62,14 @@ router.post('/view_by_filters',function(req,res){
         console.log("error",err)
             }
     if(result){
-        /*if(result.length==0){
+        if(result.length==0){
             res.send("No matches found")
         }
-        else{*/
+        else{
             console.log("success......",result)
         var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
             res.render("layout",pagedata)
-        //}
+        }
                 }
             })
     }
@@ -81,68 +81,89 @@ router.post('/view_by_filters',function(req,res){
         console.log("error",err)
             }
     if(result){
-        /*if(result.length==0){
+        if(result.length==0){
             res.send("No matches found")
         }
-        else{*/
+        else{
         console.log("success......",result)
         var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
         res.render("layout",pagedata)
-        //}
+        }
                 }
             })
         }
-    /*if(category && village && !head){
+    if(category!='Select category' && village!='Select village' && !head){
     var query= {$and:[{Caste:category},{Villages:village}]}
     queries.findWhere(state,query,function(err,result){
     if(err){
         console.log("error",err)
     }
     if(result){
+        if(result.length==0){
+            res.send("No matches found")
+        }
+        else{
         console.log("success......",result)
         var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
         res.render("layout",pagedata)
         }
+        }
     })
     }
-    if(Location && job_type && !Category){
-        var query= {$and:[{'Location': {'$regex': Location,'$options': 'i'}},{'job_type': {'$regex': job_type,'$options': 'i'}}]}
-    jobs.findWhere(query,function(err,result){
+    if(village!='Select village' && head && category=='Select category'){
+        var query= {$and:[{Villages:village},{'Family_Head': {'$regex': head,'$options': 'i'}}]}
+    queries.findWhere(state,query,function(err,result){
     if(err){
         console.log("error",err)
-        res.status(400).json({status:0,err:"Error!"})
+        
     }
     if(result){
+        if(result.length==0){
+            res.send("No matches found")
+        }
+        else{
         console.log("success......",result)
-        res.status(200).json({status:1,result:result})
-    }
-    })
-    }
-    if(Category && job_type && !Location){
-        var query= {$and:[{'Category': {'$regex': Category,'$options': 'i'}},{'job_type': {'$regex': job_type,'$options': 'i'}}]}
-    jobs.findWhere(query,function(err,result){
-    if(err){
-        console.log("error",err)
-        res.status(400).json({status:0,err:"Error!"})
-    }
-    if(result){
-        console.log("success......",result)
-        res.status(200).json({status:1,result:result})
+        var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+        res.render("layout",pagedata)
+        }
     }
     })
     }
-    if(Category && Location && job_type){
-    var query= {$and:[{'Category': {'$regex': Category,'$options': 'i'}},{'Location': {'$regex': Location,'$options': 'i'}},{'job_type': {'$regex': job_type,'$options': 'i'}}]}
-    jobs.findWhere(query,function(err,result){
+    if(category!='Select category' && head && village=='Select village'){
+        var query= {$and:[{Caste:category},{'Family_Head': {'$regex': head,'$options': 'i'}}]}
+    queries.findWhere(state,query,function(err,result){
     if(err){
         console.log("error",err)
-        res.status(400).json({status:0,err:"Error!"})
     }
     if(result){
+        if(result.length==0){
+            res.send("No matches found")
+        }
+        else{
         console.log("success......",result)
-        res.status(200).json({status:1,result:result})
+        var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+        res.render("layout",pagedata)
+        }
+    }
+    })
+    }
+    if(category!='Select category' && village!='Select village' && head){
+    var query= {$and:[{Caste:category},{Villages:village},{'Family_Head': {'$regex': head,'$options': 'i'}}]}
+    queries.findWhere(state,query,function(err,result){
+    if(err){
+        console.log("error",err)
+    }
+    if(result){
+        if(result.length==0){
+            res.send("No matches found")
+        }
+        else{
+        console.log("success......",result)
+        var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+        res.render("layout",pagedata)
+        }
     }
 })
-}*/
+}
 })
 module.exports=router;
