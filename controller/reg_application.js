@@ -8,7 +8,8 @@ router.get('/reports',function(req,res){
     var district=req.session.district;
     var block=req.session.block;
     var panchayat=req.session.panchayat;
-    queries.find(state,function(err,result){
+    //var query={$and:[{Panchayat:panchayat},{}]}
+    queries.findWhere(state,{Panchayat:panchayat},function(err,result){
         queries.distinctWhere(state,"Villages",{Panchayat:panchayat},function(err2,result2){
         if(err2){
             console.log(err2)
