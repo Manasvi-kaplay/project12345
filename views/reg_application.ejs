@@ -27,7 +27,6 @@
       <button type="submit">Search</button>
     </div>
 </form>
-<h4>Total: <%=data.length%></h4>
 <center>
     <table border="1px">
         <tr>
@@ -44,13 +43,15 @@
             <th class="t1">Disability</th>
             <th class="t1">Minority</th>
             <th class="t1">Job card id</th>
-            <th class="t1">Reason(if not issued)</th>
             <th class="t1">Status</th>
             </tr>
+            <% var count=0 %>
             <% data.forEach(function(x,i){ %>
                 <div>
                 <tr>
-                    <td><%=i+1%></td>
+                    <% if(x.Applicant_Detail[0].Status=='Approved'){%>
+                    <% count=count+1 %>
+                    <td><%=count%></td>
                     <td><%=x.Villages%></td>
                     <td><%=x.Family_Head %></td>
                     <td><%=x.F_H_Name %></td>
@@ -63,8 +64,8 @@
                     <td><%=x.Applicant_Detail[0].Disabled %></td>
                     <td><%=x.Applicant_Detail[0].Minority %></td>
                     <td><%=x.Applicant_Detail[0].Job_Card_ID %></td>
-                    <td><%=x.Applicant_Detail[0].Reason %></td>
                     <td><%=x.Applicant_Detail[0].Status %></td>
+                    <%}%>
                 </tr>
                 <tr>
                     <td></td>
@@ -73,6 +74,7 @@
                     <td></td>
                     <td></td>
                     <% for(var j=1;j < x.Applicant_Detail.length; j+=1) { %>
+                        <% if(x.Applicant_Detail[j].Status=='Approved'){%>
                         <td><%=x.Applicant_Detail[j].Name %></td>
                         <td><%=x.Applicant_Detail[j].Gender %></td>
                     <td><%=x.Applicant_Detail[j].Age %></td>
@@ -81,11 +83,12 @@
                     <td><%=x.Applicant_Detail[j].Disabled %></td>
                     <td><%=x.Applicant_Detail[j].Minority %></td>
                     <td><%=x.Applicant_Detail[j].Job_Card_ID %></td>
-                    <td><%=x.Applicant_Detail[j].Reason %></td>
                     <td><%=x.Applicant_Detail[j].Status %></td>
+                    <%}%>
                         <%}%>
                 </tr>
                 </div>
                 <% }) %>
     </table>
+    <h4>Total no. of approved applicants: <%=count%></h4>
     </center>

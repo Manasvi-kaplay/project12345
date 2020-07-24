@@ -1,5 +1,5 @@
 <center>
-    <h2>Registration application reports</h2>
+    <h2>Pending job cards to be verified</h2>
     
     <table border="1px">
         <tr>
@@ -22,7 +22,7 @@
             <% result.forEach(function(x,i){ %>
                 <div>
                 <tr>
-                    <% if(x.Applicant_Detail[0].Status=='Approved'){%>
+                    <% if(x.Applicant_Detail[0].Status=='Pending'){%>
                         <% count=count+1 %>
                     <td><%=count%></td>
                     <td><%=x.Villages%></td>
@@ -48,7 +48,7 @@
                     <td></td>
                     <td></td>
                     <% for(var j=1;j < x.Applicant_Detail.length; j+=1) { %>
-                        <% if(x.Applicant_Detail[j].Status=='Approved'){%>
+                        <% if(x.Applicant_Detail[j].Status=='Pending'){%>
                         <td><%=x.Applicant_Detail[j].Name %></td>
                         <td><%=x.Applicant_Detail[j].Gender %></td>
                     <td><%=x.Applicant_Detail[j].Age %></td>

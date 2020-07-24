@@ -21,7 +21,7 @@ router.get('/reports',function(req,res){
             var data=result;
             console.log("data...!!!!!",data)
             console.log("result2......***",result2)
-            var pagedata={"title":"Registration application register","pagename":"reg_application",state:state,year:year,district:district,block:block,panchayat:panchayat,data:data,result2:result2}
+            var pagedata={"title":"Pending job cards to be verified","pagename":"pending_reports",state:state,year:year,district:district,block:block,panchayat:panchayat,data:data,result2:result2}
             res.render("layout",pagedata)
         }
     })
@@ -53,7 +53,7 @@ router.post('/view_by_filters',function(req,res){
                 res.send("No matches found")
             }
             else{
-            var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+            var pagedata={"title":"Search results","pagename":"pending_reports_results",result:result}
             res.render("layout",pagedata)
             }
         }
@@ -72,7 +72,7 @@ router.post('/view_by_filters',function(req,res){
         }
         else{
             console.log("success......",result)
-        var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+        var pagedata={"title":"Search results","pagename":"pending_reports_results",result:result}
             res.render("layout",pagedata)
         }
                 }
@@ -91,7 +91,7 @@ router.post('/view_by_filters',function(req,res){
         }
         else{
         console.log("success......",result)
-        var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+        var pagedata={"title":"Search results","pagename":"pending_reports_results",result:result}
         res.render("layout",pagedata)
         }
                 }
@@ -109,7 +109,7 @@ router.post('/view_by_filters',function(req,res){
         }
         else{
         console.log("success......",result)
-        var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+        var pagedata={"title":"Search results","pagename":"pending_reports_results",result:result}
         res.render("layout",pagedata)
         }
         }
@@ -128,7 +128,7 @@ router.post('/view_by_filters',function(req,res){
         }
         else{
         console.log("success......",result)
-        var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+        var pagedata={"title":"Search results","pagename":"pending_reports_results",result:result}
         res.render("layout",pagedata)
         }
     }
@@ -146,7 +146,7 @@ router.post('/view_by_filters',function(req,res){
         }
         else{
         console.log("success......",result)
-        var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+        var pagedata={"title":"Search results","pagename":"pending_reports_results",result:result}
         res.render("layout",pagedata)
         }
     }
@@ -164,7 +164,7 @@ router.post('/view_by_filters',function(req,res){
         }
         else{
         console.log("success......",result)
-        var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
+        var pagedata={"title":"Search results","pagename":"pending_reports_results",result:result}
         res.render("layout",pagedata)
         }
     }
