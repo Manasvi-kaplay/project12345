@@ -8,4 +8,5 @@ router.use("/cat_report",require("./cat_report"))
 router.use("/pending_reports",require("./pending_reports"))
 router.use("/reg_application",require("./reg_application"))
 router.use("/village_wise_imp",require("./village_wise_imp"))
+router.use("/panchayat_wise_imp",require("./panchayat_wise_imp"))
 module.exports=router;

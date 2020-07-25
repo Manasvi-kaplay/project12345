@@ -48,3 +48,9 @@ module.exports.distinctWhere=function(collection_name,field,query,cb){
 		db.collection(collection_name).distinct(field,query,cb)
 	})
 }
+module.exports.aggregate=function(collection_name,arr,cb){
+	connection.init(function(err,client){
+		var db=client.db("mgnrega");
+		db.collection(collection_name).aggregate(arr).toArray(cb);
+	})
+}
