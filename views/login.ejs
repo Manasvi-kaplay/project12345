@@ -1,23 +1,34 @@
+<head>
+    <style>
+        #districtdiv,#blockdiv,#panchayatdiv,#submit{
+            display: none;
+        }
+    </style>
+</head>
 <body>
     <script type="text/javascript">
-        var subcategory = {
-            Mobile: ["Nokia", "Redmi", "Samsung"],
-            Clothes: ["Shirt", "Pant", "T-shirt"]
+        function districtCall(){
+            const year_s = document.getElementById('selectYears').value
+            console.log(year_s)
+            //document.getElementById('selectYears').disabled=true;
+            document.getElementById('districtdiv').style.display="block";
         }
-        function makeSubmenu(value) {
-            if (value.length == 0) 
-            document.getElementById("categorySelect").innerHTML = "<option></option>";
-            else {
-                var citiesOptions = "";
-                for (categoryId in subcategory[value]) {
-                    citiesOptions += "<option>" + subcategory[value][categoryId] + "</option>";
-                }
-                document.getElementById("categorySelect").innerHTML = citiesOptions;
-            }
+        function blockCall(){
+            const district = document.getElementById('selectDistrict').value
+            console.log(district)
+            //document.getElementById('selectDistrict').disabled=true;
+            document.getElementById('blockdiv').style.display="block";
+
         }
-        function resetSelection() {
-            document.getElementById("category").selectedIndex = 0;
-            document.getElementById("categorySelect").selectedIndex = 0;
+        function panchayatCall(){
+            const blocks = document.getElementById('selectBlock').value
+            console.log(blocks)
+            //document.getElementById('selectBlock').disabled=true;
+            document.getElementById('panchayatdiv').style.display="block";
+            const panchayats = document.getElementById('selectpanchayat').value;
+            console.log(panchayats);
+            document.getElementById('btn').disabled=false;
+
         }
     </script>
 <center>
@@ -27,28 +38,44 @@
             <div class="form-group">
                 <input type="hidden" class="form-control" name="state" value="<%=state%>" />
             </div>
-            <div class="form-group">
-                <label>Financial year:</label>
-                <select id="year" name="year">
-                    <option value="2018-2019">2018-2019</option>
-                    <option value="2019-2020">2019-2020</option>
+            <div class="form-group" id="yeardiv" onchange="districtCall()">
+                <label for="selectYears">Financial year:</label>
+                <select id="selectYears" name="year">
+                    <script>
+                        window.onload = function () {
+                        var years = document.getElementById("selectYears");
+                        var currentYear = (new Date()).getFullYear();
+                        for (var i = 2009; i < currentYear; i++) {
+                            var option = document.createElement("OPTION");
+                            option.innerHTML = i+" - "+ (i+1);
+                            option.value = i;
+                            years.appendChild(option);
+                        }
+                    };
+                    </script>
                   </select>
             </div>
-            <div class="form-group">
-                <label>District:</label>
-                <select id="district" size="1" name="district" onchange="makeSubmenu(this.value)">
+            <div class="form-group" id="districtdiv" onchange="blockCall()">
+                <label for="selectDistrict">District:</label>
+                <select id="selectDistrict" size="1" name="district" onchange="blockCall()">
                     <option>Select district</option>
                     <% result2.forEach(function(x){ %>
                         <option value="<%= x %>"><%=x  %></option>
                    <% }) %>
                   </select>
             </div>
-            <!---<div class="form-group">
+            <div class="form-group" id="blockdiv" onchange="panchayatCall()">
                 <label>Block:</label>
                 <select id="block" name="block">
                     <option value="select block">Select block</option>
                   </select>
-            </div>-->
+            </div>
+            <div class="form-group" id="panchayatdiv">
+                <label>Panchayat:</label>
+                <select id="panchayatdiv" name="panchayat">
+                    <option value="select panchayat">Select panchayat</option>
+                  </select>
+            </div>
             <button type="submit">Next</button>   
         </form>
         <div class="error">

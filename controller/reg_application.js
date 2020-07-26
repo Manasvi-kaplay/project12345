@@ -50,7 +50,8 @@ router.post('/view_by_filters',function(req,res){
         if(result){
             console.log("success......",result)
             if(result.length==0){
-                res.send("No matches found")
+                var pagedata={"title":"Search results","pagename":"no_results"}
+            res.render("layout",pagedata)
             }
             else{
             var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
@@ -68,7 +69,8 @@ router.post('/view_by_filters',function(req,res){
             }
     if(result){
         if(result.length==0){
-            res.send("No matches found")
+            var pagedata={"title":"Search results","pagename":"no_results"}
+            res.render("layout",pagedata)
         }
         else{
             console.log("success......",result)
@@ -87,7 +89,8 @@ router.post('/view_by_filters',function(req,res){
             }
     if(result){
         if(result.length==0){
-            res.send("No matches found")
+            var pagedata={"title":"Search results","pagename":"no_results"}
+            res.render("layout",pagedata)
         }
         else{
         console.log("success......",result)
@@ -105,7 +108,8 @@ router.post('/view_by_filters',function(req,res){
     }
     if(result){
         if(result.length==0){
-            res.send("No matches found")
+            var pagedata={"title":"Search results","pagename":"no_results"}
+            res.render("layout",pagedata)
         }
         else{
         console.log("success......",result)
@@ -124,7 +128,8 @@ router.post('/view_by_filters',function(req,res){
     }
     if(result){
         if(result.length==0){
-            res.send("No matches found")
+            var pagedata={"title":"Search results","pagename":"no_results"}
+            res.render("layout",pagedata)
         }
         else{
         console.log("success......",result)
@@ -142,7 +147,8 @@ router.post('/view_by_filters',function(req,res){
     }
     if(result){
         if(result.length==0){
-            res.send("No matches found")
+            var pagedata={"title":"Search results","pagename":"no_results"}
+            res.render("layout",pagedata)
         }
         else{
         console.log("success......",result)
@@ -160,7 +166,8 @@ router.post('/view_by_filters',function(req,res){
     }
     if(result){
         if(result.length==0){
-            res.send("No matches found")
+            var pagedata={"title":"Search results","pagename":"no_results"}
+            res.render("layout",pagedata)
         }
         else{
         console.log("success......",result)

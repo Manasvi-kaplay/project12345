@@ -37,8 +37,6 @@ router.get('/login',function(req,res){
             }
         }
     })
-    
-
 })
 router.post('/block',function(req,res){
     console.log("req.body............",req.body)
