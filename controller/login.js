@@ -26,6 +26,7 @@ router.get('/login',function(req,res){
                         }
                         if(result2){
                             console.log("result2......",result2)
+                            req.session.state=state;
                             var pagedata={"pagename":"login","title":"login page",state:state,result2:result2}
                             res.render("layout",pagedata);
                         }
@@ -38,11 +39,18 @@ router.get('/login',function(req,res){
         }
     })
 })
-router.post('/block',function(req,res){
-    console.log("req.body............",req.body)
-    var year=req.body.year
-    var state=req.body.state
-    var district=req.body.district
+router.get('/block',function(req,res){
+    console.log("req.query............",req.query)
+    var district=req.query.district
+    global.district = district
+    var state=req.session.state
+    req.session.district=district;
+    console.log("req.session in block method............",req.session)
+    
+})
+router.get('/getBlocks',function(req,res){
+    console.log("variable district in getBlocks method.....",global.district)
+    var state=req.session.state;
     queries.distinctWhere(state,"Block",{District:district},function(err,result){
         if(err){
             console.log(err)
@@ -50,26 +58,29 @@ router.post('/block',function(req,res){
         if(result){
             var block=result
             console.log("block....*******",block);
-            var pagedata={"pagename":"block","title":"Choose block",year:year,state:state,district:district,block:block}
-            res.render("layout",pagedata)
+            res.json(block)
         }
     }) 
 })
-router.post('/panchayat',function(req,res){
-    console.log("req.body....!!!!!!!!!",req.body)
-    var year=req.body.year;
-    var state=req.body.state;
-    var district=req.body.district;
-    var block=req.body.block;
+router.get('/panchayat',function(req,res){
+    console.log("req.query in panchayat method....!!!!!!!!!",req.query)
+    var block=req.query.block;
+    global.block = block;
+    //var state=req.session.state
+    //req.session.district=district;
+    //console.log("req.session in block method............",req.session)
+})
+router.get('/getPanchayats',function(req,res){
+    console.log("variable block in getPanchayats method.....",global.block)
+    var state=req.session.state;
     queries.distinctWhere(state,"Panchayat",{Block:block},function(err,result){
         if(err){
             console.log(err)
         }
         if(result){
             var panchayat=result;
-            console.log("pancahayat........%%%%%%",panchayat)
-            var pagedata={"pagename":"panchayat","title":"Choose panchayat",year:year,state:state,district:district,block:block,panchayat:panchayat}
-            res.render("layout",pagedata)
+            console.log("panchayat....*******",panchayat);
+            res.json(panchayat)
         }
     })
 })
