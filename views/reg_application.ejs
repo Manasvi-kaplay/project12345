@@ -63,7 +63,7 @@
                     <td><%=x.Applicant_Detail[0].Date_of_Job_card_Issue %></td>
                     <td><%=x.Applicant_Detail[0].Disabled %></td>
                     <td><%=x.Applicant_Detail[0].Minority %></td>
-                    <td><%=x.Applicant_Detail[0].Job_Card_ID %></td>
+                    <td><a href="/applicant_profile/info?id=<%=x.Applicant_Detail[0].Job_Card_ID %>" id="<%=x.Applicant_Detail[0].Job_Card_ID %>"><%=x.Applicant_Detail[0].Job_Card_ID %></a></td>
                     <td><%=x.Applicant_Detail[0].Status %></td>
                     <%}%>
                 </tr>
@@ -82,7 +82,7 @@
                     <td><%=x.Applicant_Detail[j].Date_of_Job_card_Issue %></td>
                     <td><%=x.Applicant_Detail[j].Disabled %></td>
                     <td><%=x.Applicant_Detail[j].Minority %></td>
-                    <td><%=x.Applicant_Detail[j].Job_Card_ID %></td>
+                    <td><a href="/applicant_profile/info?id=<%=x.Applicant_Detail[j].Job_Card_ID %>" id="<%=x.Applicant_Detail[j].Job_Card_ID %>"><%=x.Applicant_Detail[j].Job_Card_ID %></a></td>
                     <td><%=x.Applicant_Detail[j].Status %></td>
                     <%}%>    
                 </tr>

@@ -1,6 +1,7 @@
 var express=require("express")
 var router=express.Router();
 router.use("/home",require("./home"))
+router.use("/applicant_profile",require("./applicant_profile"))
 router.use("/states",require("./states"))
 router.use("/login",require("./login"))
 router.use("/reports",require("./reports"))

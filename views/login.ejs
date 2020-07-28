@@ -78,7 +78,7 @@
                     $(document).ready(function(){    
                         $("select.dis").change(function(){
                             var selecteddistrict = $(this).children("option:selected").val();
-                            alert("You have selected the district - " + selecteddistrict);
+                            //alert("You have selected the district - " + selecteddistrict);
                             $.get("/login/block",{district:selecteddistrict}, function(result){
                                 $("span").text(result);
                                 console.log("HIIIIIII",result)
@@ -97,7 +97,7 @@
                     $(document).ready(function(){    
                         $("select.blk").change(function(){
                             var selectedblock = $(this).children("option:selected").val();
-                            alert("You have selected the block - " + selectedblock);
+                            //alert("You have selected the block - " + selectedblock);
                             $.get("/login/panchayat",{block:selectedblock}, function(result){
                                 $("span").text(result);
                                 console.log("HIIIIIII",result)
