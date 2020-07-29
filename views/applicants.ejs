@@ -1,11 +1,14 @@
 <center>
-    <h2><i>Registration and Job card</i></h2><br>
-<form action="/applicants/add" method="post" id="reg">
-    <h4></h4>
+    <h2><i>Registration and Job card</i></h2>
+    <h4>Financial Year: <%=year%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State: <%=state%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;District: <%=district%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Block: <%=block%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Panchayat: <%=panchayat%></h4>
+<form action="/applicants/add" method="post">
 <div class="form-group">
     <label>Village</label>
     <select id="village" name="Villages">
         <option>Select village</option>
+        <% result.forEach(function(y){ %>
+            <option value="<%= y %>"><%=y  %></option>
+       <% }) %>
       </select>
 </div>
 <div class="form-group">
@@ -38,6 +41,7 @@
         <input type="text" name="Job_Card_Id" placeholder="Job card id">
         <input type="text" name="Reason" placeholder="Reason(if not to approve)">
         <input type="text" name="Status" placeholder="Status">
+        <input type="text" name="Aadhaar" placeholder="Aadhar No.">
         <a href="javascript:void(0);" class="add_button" title="Add field">Add applicant</a>
     </div>
 </div>
