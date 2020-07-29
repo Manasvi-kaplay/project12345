@@ -75,6 +75,10 @@
                 <% }) %>
     </table>
     <h4>Note: As percentage registered decreases,importance of reports increases</h4>
+    <form action="/panchayat_wise_imp/graph" method="post">
+        <input type="hidden" value="<%=result%>">
+        <button type="submit">View graph</button>
+    </form>
     <figure class="highcharts-figure">
         <div id="container" onchange="take(this)"></div>
         <p class="highcharts-description">

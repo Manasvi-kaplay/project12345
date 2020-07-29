@@ -1,5 +1,6 @@
 <center>
     <h2>Highlighting importance of village reports on the basis of no. of registrations/population</h2>
+    <form action="/village_wise_imp/graph" method="post">
     <table border="1px">
         <tr>
             <th class="t1">S.No</th>
@@ -19,8 +20,13 @@
                     <td><%=x.Total_Registered %></td>
                     <td><%=x.Total_Households %></td>
                     <td><%=(x.Total_Registered*100)/x.Total_Households %></td>
+                    <td><input type="text" value="<%=(x.Total_Registered*100)/x.Total_Households %>"></td>
                 </tr>
                 <% }) %>
     </table>
     <h4>Note: As percentage registered decreases,importance of reports increases</h4>
+    
+        <input type="text" value="<%=specific%>">
+        <button type="submit">View graph</button>
+    </form>
     </center>

@@ -14,12 +14,14 @@ if(result){
         if("Total_Households" in obj){
             specific.push(obj);
         }
-    })
-    
+    })   
     console.log("Here...",specific)
     var pagedata={"title":"Highlight importance of reports","pagename":"village_wise_imp",specific:specific}
     res.render("layout",pagedata)
 }
 })
+})
+router.post('/graph',function(req,res){
+    console.log("village graph req.body... ",req.body)
 })
 module.exports=router;
