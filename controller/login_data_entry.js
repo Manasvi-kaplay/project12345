@@ -27,7 +27,7 @@ router.get('/login',function(req,res){
                         if(result2){
                             console.log("result2......",result2)
                             req.session.state=state;
-                            var pagedata={"pagename":"login","title":"login page",state:state,result2:result2}
+                            var pagedata={"pagename":"login_data_entry","title":"login page",state:state,result2:result2}
                             res.render("layout",pagedata);
                         }
                 })
@@ -39,7 +39,6 @@ router.get('/login',function(req,res){
         }
     })
 })
-
 router.get('/block',function(req,res){
     console.log("req.query............",req.query)
     var district=req.query.district

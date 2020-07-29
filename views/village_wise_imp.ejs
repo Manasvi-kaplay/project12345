@@ -20,13 +20,11 @@
                     <td><%=x.Total_Registered %></td>
                     <td><%=x.Total_Households %></td>
                     <td><%=(x.Total_Registered*100)/x.Total_Households %></td>
-                    <td><input type="text" value="<%=(x.Total_Registered*100)/x.Total_Households %>"></td>
+                    <td><input name="percent" type="hidden" value="<%=(x.Total_Registered*100)/x.Total_Households %>"></td>
                 </tr>
                 <% }) %>
     </table>
     <h4>Note: As percentage registered decreases,importance of reports increases</h4>
-    
-        <input type="text" value="<%=specific%>">
         <button type="submit">View graph</button>
     </form>
     </center>

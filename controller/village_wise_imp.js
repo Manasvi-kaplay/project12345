@@ -23,5 +23,6 @@ if(result){
 })
 router.post('/graph',function(req,res){
     console.log("village graph req.body... ",req.body)
+    var percent=req.body.percent;
 })
 module.exports=router;

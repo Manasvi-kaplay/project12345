@@ -18,7 +18,7 @@ function(err,result){
     }
 })
 })
-router.post('/graph',function(req,res){
+router.get('/graph',function(req,res){
     console.log("panchayat graph req.body.....",req.body)
 })
 module.exports=router;
