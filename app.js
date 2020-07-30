@@ -4,8 +4,10 @@ var bodyparser = require("body-parser");
 var fileupload = require("express-fileupload");
 var flash=require("express-flash");
 var session=require("express-session")
-var cookieParser=require("cookie-parser")
+var cookieParser=require("cookie-parser");
+const compression = require("compression");
 app.use(bodyparser());
+app.use(compression())
 app.use(express.static(__dirname+"/public/"));
 app.use(cookieParser())
 app.use(fileupload())

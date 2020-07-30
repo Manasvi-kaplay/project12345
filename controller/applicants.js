@@ -2,7 +2,7 @@ var express=require("express");
 var router=express.Router();
 var queries=require("../model/category")
 router.post('/form',function(req,res){
-    console.log("*********",req.body)
+    //console.log("*********",req.body)
     var year=req.body.year;
     var state=req.body.state;
     var district=req.body.district;

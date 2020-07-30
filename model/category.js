@@ -14,7 +14,7 @@ module.exports.find=function(collection_name,cb){
 module.exports.findWhere=function(collection_name,obj, cb){
 	connection.init(function(err, client){
 		var db = client.db('mgnrega');
-		console.log("collection name in model...",collection_name)
+		//console.log("collection name in model...",collection_name)
 		db.collection(collection_name).find(obj).toArray(cb);
 	});
 }
