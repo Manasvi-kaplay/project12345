@@ -15,14 +15,19 @@ if(result){
             specific.push(obj);
         }
     })   
-    console.log("Here...",specific)
+    global.specific=specific;
+    //console.log("Here...",specific)
     var pagedata={"title":"Highlight importance of reports","pagename":"village_wise_imp",specific:specific}
     res.render("layout",pagedata)
 }
 })
 })
-router.post('/graph',function(req,res){
-    console.log("village graph req.body... ",req.body)
-    var percent=req.body.percent;
+router.get('/graph',function(req,res){
+    //console.log("specific... ",specific)
+    var pagedata={"title":"Graph","pagename":"village_wise_graph"}
+    res.render("layout",pagedata)
+})
+router.get('/getGraph',function(req,res){
+    res.json(specific);
 })
 module.exports=router;

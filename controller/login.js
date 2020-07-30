@@ -52,16 +52,19 @@ router.get('/block',function(req,res){
 router.get('/getBlocks',function(req,res){
     //console.log("variable district in getBlocks method.....",global.district)
     var state=req.session.state;
-    queries.distinctWhere(state,"Block",{District:district},function(err,result){
-        if(err){
-            console.log(err)
-        }
-        if(result){
-            var block=result
-            console.log("block....*******",block);
-            res.json(block)
-        }
-    }) 
+    queries.createIndex(state,{"Block":1},function(error,indexed){
+        queries.distinctWhere(state,"Block",{District:district},function(err,result){
+            if(err){
+                console.log(err)
+            }
+            if(result){
+                var block=result
+                console.log("block....*******",block);
+                res.json(block)
+            }
+        }) 
+    })
+    
 })
 router.get('/panchayat',function(req,res){
     //console.log("req.query in panchayat method....!!!!!!!!!",req.query)

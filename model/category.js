@@ -54,3 +54,9 @@ module.exports.aggregate=function(collection_name,arr,cb){
 		db.collection(collection_name).aggregate(arr).toArray(cb);
 	})
 }
+module.exports.createIndex=function(collection_name,obj,cb){
+	connection.init(function(err,client){
+		var db=client.db("mgnrega");
+		db.collection(collection_name).createIndex(obj,cb);
+	})
+}

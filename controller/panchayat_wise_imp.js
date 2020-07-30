@@ -12,13 +12,19 @@ function(err,result){
         console.log(err)
     }
     if(result){
-        console.log("Required result.....*****",result)
+        var req_result=result;
+        global.req_result=req_result;
+        console.log("Required result.....*****",req_result)
         var pagedata={"title":"Highlight panchayat wise important reports","pagename":"panchayat_wise_imp",result:result}
         res.render("layout",pagedata)
     }
 })
 })
 router.get('/graph',function(req,res){
-    console.log("panchayat graph req.body.....",req.body)
+    var pagedata={"title":"Graph","pagename":"panchayat_wise_graph"}
+    res.render("layout",pagedata)
+})
+router.get('/getGraph',function(req,res){
+    res.json(req_result);
 })
 module.exports=router;
