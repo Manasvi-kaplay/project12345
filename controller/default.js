@@ -12,4 +12,5 @@ router.use("/pending_reports",require("./pending_reports"))
 router.use("/reg_application",require("./reg_application"))
 router.use("/village_wise_imp",require("./village_wise_imp"))
 router.use("/panchayat_wise_imp",require("./panchayat_wise_imp"))
+router.use("/state_wise_comp",require("./state_wise_comp"))
 module.exports=router;

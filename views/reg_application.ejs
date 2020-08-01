@@ -1,3 +1,13 @@
+<html>
+<head>
+    <style>
+        .error{
+            color:crimson;
+            margin-bottom: 1em;
+          }
+    </style>
+</head>
+<body>
 <center>
     <h2>Registration application reports</h2>
     <h4>Financial Year: <%=year%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State: <%=state%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;District: <%=district%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Block: <%=block%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Panchayat: <%=panchayat%></h4>
@@ -48,8 +58,8 @@
             <% var count=0 %>
             <% data.forEach(function(x,i){ %>
                 <div>
-                <tr>
-                    <% if(x.Applicant_Detail[0].Status=='Approved'){%>
+                    <% if(x.Applicant_Detail[0].Status=='Approved'){%>  
+                        <tr>
                     <% count=count+1 %>
                     <td><%=count%></td>
                     <td><%=x.Villages%></td>
@@ -64,9 +74,11 @@
                     <td><%=x.Applicant_Detail[0].Disabled %></td>
                     <td><%=x.Applicant_Detail[0].Minority %></td>
                     <td><a href="/applicant_profile/info?id=<%=x.Applicant_Detail[0].Job_Card_ID %>" id="<%=x.Applicant_Detail[0].Job_Card_ID %>"><%=x.Applicant_Detail[0].Job_Card_ID %></a></td>
-                    <td><%=x.Applicant_Detail[0].Status %></td>
+                    <% if(x.Applicant_Detail[0].Photo){%>
+                    <td class="error"><%=x.Applicant_Detail[0].Status %></td>
                     <%}%>
                 </tr>
+                <%}%>
                 <% for(var j=1;j < x.Applicant_Detail.length; j+=1) { %>
                 <tr>
                     <td></td>
@@ -83,7 +95,9 @@
                     <td><%=x.Applicant_Detail[j].Disabled %></td>
                     <td><%=x.Applicant_Detail[j].Minority %></td>
                     <td><a href="/applicant_profile/info?id=<%=x.Applicant_Detail[j].Job_Card_ID %>" id="<%=x.Applicant_Detail[j].Job_Card_ID %>"><%=x.Applicant_Detail[j].Job_Card_ID %></a></td>
-                    <td><%=x.Applicant_Detail[j].Status %></td>
+                    <% if(x.Applicant_Detail[j].Photo){%>
+                    <td class="error"><%=x.Applicant_Detail[j].Status %></td>
+                    <%}%>
                     <%}%>    
                 </tr>
                 <%}%>
@@ -92,3 +106,5 @@
     </table>
     <h4>Total no. of approved applicants: <%=count%></h4>
     </center>
+</body>
+</html>

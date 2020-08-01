@@ -44,6 +44,7 @@ router.post('/add',function(req,res){
     var Reason=req.body.Reason;
     var Status=req.body.Status;
     var Aadhaar=req.body.Aadhaar;
+   // console.log("aadhaar",Aadhaar)
     if(Name.length==1){
         Applicant_Detail.push({"Name":Name,"Gender":Gender,"Age":Age,
         "Request_for_Registration":Request_for_Registration,

@@ -14,7 +14,7 @@ function(err,result){
     if(result){
         var req_result=result;
         global.req_result=req_result;
-        console.log("Required result.....*****",req_result)
+        //console.log("Required result.....*****",req_result)
         var pagedata={"title":"Highlight panchayat wise important reports","pagename":"panchayat_wise_imp",result:result}
         res.render("layout",pagedata)
     }

@@ -2,7 +2,7 @@ var express=require("express");
 var router=express.Router();
 var queries=require("../model/category");
 router.get('/reports',function(req,res){
-    console.log("req.session",req.session);
+   // console.log("req.session",req.session);
     var state=req.session.state;
     var year=req.session.year;
     var district=req.session.district;
@@ -19,8 +19,9 @@ router.get('/reports',function(req,res){
         }
         if(result){
             var data=result;
-            console.log("data...!!!!!",data)
-            console.log("result2......***",result2)
+            //console.log("data...!!!!!",data)
+            //console.log("result2......***",result2)
+            
             var pagedata={"title":"Registration application register","pagename":"reg_application",state:state,year:year,district:district,block:block,panchayat:panchayat,data:data,result2:result2}
             res.render("layout",pagedata)
         }
@@ -28,8 +29,8 @@ router.get('/reports',function(req,res){
     }) 
 })
 router.post('/view_by_filters',function(req,res){
-    console.log("req.session....***",req.session)
-    console.log("req.body....",req.body)
+    //console.log("req.session....***",req.session)
+    //console.log("req.body....",req.body)
     var state=req.session.state;
     var year=req.session.year;
     var district=req.session.district;
@@ -40,15 +41,15 @@ router.post('/view_by_filters',function(req,res){
     var village=req.body.village;
     
     if(category!='Select category' && !head && village=='Select village'){
-        console.log("Category......",category);
-        console.log("Selected panchayat....",panchayat);
+        //console.log("Category......",category);
+        //console.log("Selected panchayat....",panchayat);
         var query={$and:[{Panchayat:panchayat},{Caste:category}]}
         queries.findWhere(state,query,function(err,result){
         if(err){
             console.log("error",err)
         }
         if(result){
-            console.log("success......",result)
+            //console.log("success......",result)
             if(result.length==0){
                 var pagedata={"title":"Search results","pagename":"no_results"}
             res.render("layout",pagedata)
@@ -61,7 +62,7 @@ router.post('/view_by_filters',function(req,res){
     })
     }
     if(village!='Select village' && category=='Select category' && !head){
-        console.log("Village......",village);
+        //console.log("Village......",village);
         var query={$and:[{Panchayat:panchayat},{Villages:village}]}
      queries.findWhere(state,query,function(err,result){
     if(err){
@@ -73,7 +74,7 @@ router.post('/view_by_filters',function(req,res){
             res.render("layout",pagedata)
         }
         else{
-            console.log("success......",result)
+           // console.log("success......",result)
         var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
             res.render("layout",pagedata)
         }
@@ -81,7 +82,7 @@ router.post('/view_by_filters',function(req,res){
             })
     }
     if(head && category=='Select category' && village=='Select village'){
-        console.log("Head......",head);
+        //console.log("Head......",head);
         var query= {$and:[{Panchayat:panchayat},{'Family_Head': {'$regex': head,'$options': 'i'}}]}
      queries.findWhere(state,query,function(err,result){
     if(err){
@@ -93,7 +94,7 @@ router.post('/view_by_filters',function(req,res){
             res.render("layout",pagedata)
         }
         else{
-        console.log("success......",result)
+        //console.log("success......",result)
         var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
         res.render("layout",pagedata)
         }
@@ -112,7 +113,7 @@ router.post('/view_by_filters',function(req,res){
             res.render("layout",pagedata)
         }
         else{
-        console.log("success......",result)
+        //console.log("success......",result)
         var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
         res.render("layout",pagedata)
         }
@@ -132,7 +133,7 @@ router.post('/view_by_filters',function(req,res){
             res.render("layout",pagedata)
         }
         else{
-        console.log("success......",result)
+        //console.log("success......",result)
         var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
         res.render("layout",pagedata)
         }
@@ -151,7 +152,7 @@ router.post('/view_by_filters',function(req,res){
             res.render("layout",pagedata)
         }
         else{
-        console.log("success......",result)
+        //console.log("success......",result)
         var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
         res.render("layout",pagedata)
         }
@@ -170,7 +171,7 @@ router.post('/view_by_filters',function(req,res){
             res.render("layout",pagedata)
         }
         else{
-        console.log("success......",result)
+        //console.log("success......",result)
         var pagedata={"title":"Search results","pagename":"reg_application_results",result:result}
         res.render("layout",pagedata)
         }

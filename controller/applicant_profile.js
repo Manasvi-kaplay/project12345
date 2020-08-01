@@ -16,7 +16,7 @@ router.get('/info',function(req,res){
                 console.log(err2)
             }
             if(indexed){
-                console.log("HIIIIII",indexed);
+                //console.log("HIIIIII",indexed);
             }
             if(result){
                 if(result.length==0){
