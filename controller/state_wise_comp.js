@@ -18,4 +18,11 @@ router.get('/get',function(req,res){
             }
         })
 })
+router.get('/graph',function(req,res){
+    var pagedata={"title":"Graph","pagename":"state_wise_graph"}
+    res.render("layout",pagedata)
+})
+router.get('/getGraph',function(req,res){
+    res.json(req_result);
+})
 module.exports=router;
