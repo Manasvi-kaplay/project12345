@@ -3,41 +3,17 @@ var router=express.Router();
 var queries=require("../model/category")
 router.get('/login',function(req,res){
     var state=req.query.id;
-    //console.log("state...",state)
-    var collection_name="";
-    var count=0;
-    queries.list(function(err,result){
-        if(err){
-            console.log(err)
-        }
-        if(result){
-            result.forEach(function(a){
-                if(state==a.name){
-                    collection_name=a.name
-                    count+=1
-                    //console.log("collection_name...",collection_name)
-                }
-            })
-            //console.log(count,"collection_name....***********",collection_name)
-            if(count==1){
-                queries.distinct(collection_name,"District",function(err,result2){
+    console.log("state...",state)
+                queries.distinct(state,"District",function(err,result2){
                         if(err){
                             console.log(err)
                         }
                         if(result2){
-                            //console.log("result2......",result2)
                             req.session.state=state;
                             var pagedata={"pagename":"login","title":"login page",state:state,result2:result2}
                             res.render("layout",pagedata);
                         }
                 })
-            }
-            else{
-                var pagedata={"pagename":"login2","title":"login page",state:state}
-                            res.render("layout",pagedata);
-            }
-        }
-    })
 })
 
 router.get('/block',function(req,res){
