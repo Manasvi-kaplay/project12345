@@ -21,7 +21,7 @@ module.exports.findWhere=function(collection_name,obj, cb){
 module.exports.update=function(collection_name,where,obj,cb){
 	connection.init(function(err,client){
 		var db=client.db('mgnrega');
-  db.collection(collection_name).updateOne(where,{$set:obj},cb)
+  db.collection(collection_name).updateOne(where,{$inc:obj},cb)
 });
 }
 module.exports.delete=function(collection_name,obj,cb){
@@ -58,5 +58,11 @@ module.exports.createIndex=function(collection_name,obj,cb){
 	connection.init(function(err,client){
 		var db=client.db("mgnrega");
 		db.collection(collection_name).createIndex(obj,cb);
+	})
+}
+module.exports.ensureIndex=function(collection_name,obj,cb){
+	connection.init(function(err,client){
+		var db=client.db("mgnrega")
+		db.collection(collection_name).ensureIndex(obj,cb);
 	})
 }
