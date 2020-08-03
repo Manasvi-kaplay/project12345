@@ -1,6 +1,7 @@
 var express=require("express");
 var router=express.Router();
 var queries=require("../model/category")
+var crypto=require("crypto");
 router.post('/form',function(req,res){
     //console.log("*********",req.body)
     var year=req.body.year;
@@ -52,10 +53,14 @@ router.post('/add',function(req,res){
 "Minority":Minority,"Job_Card_Id":Job_Card_Id,"Reason":Reason,"Status":Status,"Aadhaar":Aadhaar})
     }else{
     for(var i=0;i<Name.length;i+=1){
+        var mykey = crypto.createCipher('aes-128-cbc', 'mypassword');
+        var mystr = mykey.update(Aadhaar[i], 'utf8', 'hex')
+        mystr += mykey.final('hex');
+        console.log("Encrypted aadhaar...",mystr);
         Applicant_Detail.push({"Name":Name[i],"Gender":Gender[i],"Age":Age[i],
         "Request_for_Registration":Request_for_Registration[i],
         "Date_of_Job_card_Issue":Date_of_Job_card_Issue[i],"Disabled":Disabled[i],
-"Minority":Minority[i],"Job_Card_Id":Job_Card_Id[i],"Reason":Reason[i],"Status":Status[i],"Aadhaar":Aadhaar[i]})
+"Minority":Minority[i],"Job_Card_Id":Job_Card_Id[i],"Reason":Reason[i],"Status":Status[i],"Aadhaar":mystr})
     }
 }
 var doc={"District":District,"Block":Block,"Panchayat":Panchayat,"Villages":Villages,"Family_Head":Family_Head,"Caste":Caste,
